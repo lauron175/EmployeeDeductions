@@ -1,0 +1,76 @@
+﻿@model EmployeeDeductions.Web.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Employee Calculate Benefits</h1>
+
+<div>
+    <h2>Employee</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pay)
+        </dd>
+
+        <dt>
+            Total Dependents
+        </dt>
+
+        <dd>
+            @Model.Dependents.Count()
+        </dd>        
+
+    </dl>
+    <h2>Dependents</h2>
+    <div id="btnAddDependent" class="btn btn-primary">+ Add Dependent</div>
+    
+    <div id="divDependentGrid">
+        <table id="tblDependents" class="table table-condensed table-hover">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Benefit Cost(per year)</th>
+            </tr>
+            @foreach (var dependent in Model.Dependents)
+            {
+                <tr>
+                    <td>@dependent.FirstName</td>
+                    <td>@dependent.LastName</td>
+                    <td>@dependent.BenefitCost</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div id="btnCalculateBenefits" class="btn btn-primary">Calculate Benefits</div>    
+</div>
+
+<div id="calculatedBenefits">
+
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
