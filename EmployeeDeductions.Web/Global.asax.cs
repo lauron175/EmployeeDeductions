@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using EmployeeDeductions.Domain.Models;
-using EmployeeDeductions.Web.App_Start;
-using EmployeeDeductions.Web.Models;
+﻿using EmployeeDeductions.Web.App_Start;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -13,10 +10,8 @@ namespace EmployeeDeductions.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            SimpleInjectorInitializer.Initialize();            
-
-            Mapper.CreateMap<Dependent, DependentViewModel>().ReverseMap();
-            Mapper.CreateMap<Employee, EmployeeViewModel>().ReverseMap();
+            SimpleInjectorInitializer.Initialize();
+            AutoMapperInitializer.Initialize();
         }        
     }
 }

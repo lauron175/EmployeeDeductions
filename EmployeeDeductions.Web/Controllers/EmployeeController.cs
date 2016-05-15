@@ -14,8 +14,7 @@ namespace EmployeeDeductions.Web.Controllers
         {
             _employeeService = employeeService;
         }
-
-        // GET: Employee
+        
         public ActionResult Index()
         {
             var employee = _employeeService.Get(1);
