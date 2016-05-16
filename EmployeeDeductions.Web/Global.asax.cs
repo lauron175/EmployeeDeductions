@@ -1,4 +1,8 @@
-﻿using EmployeeDeductions.Web.App_Start;
+﻿using EmployeeDeductions.Domain.Models;
+using EmployeeDeductions.Web.App_Start;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -12,6 +16,39 @@ namespace EmployeeDeductions.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             SimpleInjectorInitializer.Initialize();
             AutoMapperInitializer.Initialize();
+            CreateTempData();       
         }        
+
+        private void CreateTempData()
+        {
+            var employees = new List<Employee>();
+
+            var dependent = new Dependent
+            {
+                FirstName = "Lori",
+                LastName = "Schwartz"
+            };
+
+            var dependent2 = new Dependent
+            {
+                FirstName = "Elle",
+                LastName = "Schwartz"
+            };
+
+            var employee = new Employee();
+            employee.FirstName = "Michael";
+            employee.LastName = "Schwartz";
+            employee.EmployeeId = 1;
+            employee.Dependents.Add(dependent);
+            employee.Dependents.Add(dependent2);
+
+            employees.Add(employee);
+
+            HttpContext.Current.Application["tempEmployees"] = employees;
+
+            //var response = (List<Employee>)HttpContext.Current.Application["tempEmployees"];
+
+            //var test = "string";
+        }
     }
 }

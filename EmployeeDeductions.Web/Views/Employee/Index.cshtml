@@ -1,74 +1,68 @@
-﻿@model EmployeeDeductions.Web.Models.EmployeeViewModel
+﻿@model IEnumerable<EmployeeDeductions.Web.Models.EmployeeViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div>
-    <h2>Employee</h2>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Employee", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Pay)
-        </dt>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BenefitCost)
+        </th>
+        <th>
+            Depedents Count
+        </th>
+        <th></th>
+    </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pay)
-        </dd>
-
-        <dt>
-            Total Dependents
-        </dt>
-
-        <dd>
-            @Model.Dependents.Count()
-        </dd>        
-
-    </dl>
-    <h3>Dependents</h3>
-    <div id="btnAddDependent" class="btn btn-primary">+ Add Dependent</div>
-    
-    <div id="divDependentGrid">
-        <table id="tblDependents" class="table table-condensed table-hover">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Benefit Cost(per year)</th>
-            </tr>
-            @foreach (var dependent in Model.Dependents)
-            {
-                <tr>
-                    <td>@dependent.FirstName</td>
-                    <td>@dependent.LastName</td>
-                    <td>@dependent.BenefitCost</td>
-                </tr>
-            }
-
-        </table>
-    </div>
-    <div id="btnCalculateBenefits" class="btn btn-primary">Calculate Benefits</div>    
-</div>
-
-<div id="calculatedBenefits">
-
-</div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BenefitCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dependents.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Add Dependent", "AddDependent", new { EmployeeId = item.EmployeeId })           
+        </td>
+        @*<td>
+            @Html.ActionLink("Calculate Benefit Costs", "CalculateBenefitsCost", new { EmployeeId = item.EmployeeId })
+        </td>*@
+        <td>
+            <div id="btnCalculateBenefitsCost" class="btn btn-primary">Calculate Benefits Cost</div>
+        </td>
+            @Html.HiddenFor(modelItem => item.EmployeeId)
+    </tr>
+}    
+</table>
+<div id="calculatedBenefits"></div>
