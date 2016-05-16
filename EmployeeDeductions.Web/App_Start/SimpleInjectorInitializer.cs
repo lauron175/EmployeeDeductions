@@ -32,10 +32,12 @@ namespace EmployeeDeductions.Web.App_Start
         private static void InitializeContainer(Container container)
         {
             //services
-            container.Register<IService<Employee>, EmployeeService>(Lifestyle.Scoped);
+            container.Register<IEmployeeService, EmployeeService>(Lifestyle.Scoped);
+            container.Register<IDependentService, DependentService>(Lifestyle.Scoped);
 
             //repositories
             container.Register<IRepository<Employee>, EmployeeRepository>(Lifestyle.Scoped);
+            container.Register<IRepository<Dependent>, DependentRepository>(Lifestyle.Scoped);
         }
     }
 }

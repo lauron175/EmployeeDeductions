@@ -4,7 +4,7 @@ namespace EmployeeDeductions.Domain.Interfaces
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetAll();
+        List<T> GetAll();
         T Get(int id);
         void Create(T item);
         void Update(T item);

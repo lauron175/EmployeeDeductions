@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace EmployeeDeductions.Domain.Repositories
 {
@@ -12,7 +13,16 @@ namespace EmployeeDeductions.Domain.Repositories
     {
         public void Create(Employee item)
         {
-            throw new NotImplementedException();
+            var currentEmployeeList = (List<Employee>)HttpContext.Current.Application["tempEmployees"];
+            
+            var lastEmployeeId = (from e in currentEmployeeList
+                                 orderby e.EmployeeId descending
+                                 select e.EmployeeId).FirstOrDefault();
+
+            //faking out auto-increment on db
+            item.EmployeeId = lastEmployeeId + 1;
+
+            currentEmployeeList.Add(item);
         }
 
         public void Delete(int id)
@@ -44,9 +54,12 @@ namespace EmployeeDeductions.Domain.Repositories
             return employee;
         }
 
-        public IEnumerable<Employee> GetAll()
-        {
-            throw new NotImplementedException();
+        public List<Employee> GetAll()
+        {            
+            //Clearly this is not the way to do this - this is only for temporary data storage
+            var employees = (List<Employee>) HttpContext.Current.Application["tempEmployees"];
+
+            return employees;
         }
 
         public void Update(Employee item)

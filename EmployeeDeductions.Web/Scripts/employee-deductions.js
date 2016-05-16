@@ -1,20 +1,21 @@
 ﻿$(document).ready(function () {
     
     //handle calculate benefits click
-    $("#btnCalculateBenefits").click(function () {
+    $("#btnCalculateBenefitsCost").click(function () {                
 
-        //get employee and all dependents data
-
-        //build object - make ajax call - api will handle calulations
-
-        $("#calculatedBenefits").append("Here are the calcuated benefts");
-            
+        $.ajax({
+            type: "GET",
+            url: "/employee/CalculateBenefitsCost",            
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                $("#calculatedBenefits").append(data.TotalDeductions);
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
         }
-
     );
-
-    //handle add dependent button click
-    $("#btnAddDependent").click(function () {
-        alert('add dependent');
-    });
 })
+    
