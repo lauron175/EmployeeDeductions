@@ -41,25 +41,6 @@ namespace EmployeeDeductions.Domain.Services
         public void Update(Employee item)
         {
             throw new NotImplementedException();
-        }
-
-        public CalculatedBenefitCosts CalculateBenefitsCost(int employeeId)
-        {            
-            var employee = this.Get(employeeId);//first get the employee we are dealing with
-            var calculatedBenefitCosts = new CalculatedBenefitCosts();
-
-            if (employee.Dependents.Count < 1)
-            {
-                calculatedBenefitCosts.AnnualSalary = employee.Pay * 26;
-                calculatedBenefitCosts.SalaryAfterDeductions = employee.Pay - employee.BenefitCost;
-            }
-
-            //var response = new CalculatedBenefitCosts();
-            //response.AnnualSalary = 80000M;
-            //response.SalaryAfterDeductions = 72000M;
-            //response.TotalDeductions = 8000M;
-
-            return calculatedBenefitCosts;
-        }
+        }       
     }
 }

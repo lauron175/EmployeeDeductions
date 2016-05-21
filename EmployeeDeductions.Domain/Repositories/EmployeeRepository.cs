@@ -3,14 +3,13 @@ using EmployeeDeductions.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace EmployeeDeductions.Domain.Repositories
 {
+    //Normally would not be mixing HttpContext into the domain project - just using the context as a temp db example
     public class EmployeeRepository : IRepository<Employee>
-    {
+    {        
         public void Create(Employee item)
         {
             var currentEmployeeList = (List<Employee>)HttpContext.Current.Application["tempEmployees"];
@@ -32,25 +31,13 @@ namespace EmployeeDeductions.Domain.Repositories
 
         public Employee Get(int id)
         {
-            var dependent = new Dependent
-            {
-                FirstName = "Lori",
-                LastName = "Schwartz"
-            };
 
-            var dependent2 = new Dependent
-            {
-                FirstName = "Elle",
-                LastName = "Schwartz"
-            };
+            var currentEmployeeList = (List<Employee>)HttpContext.Current.Application["tempEmployees"];
 
-            var employee = new Employee();
-            employee.FirstName = "Michael";
-            employee.LastName = "Schwartz";
-            employee.EmployeeId = id;
-            employee.Dependents.Add(dependent);
-            employee.Dependents.Add(dependent2);
-
+            var employee = (from e in currentEmployeeList
+                            where e.EmployeeId == id                                  
+                            select e).FirstOrDefault();
+       
             return employee;
         }
 

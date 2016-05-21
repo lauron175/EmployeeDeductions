@@ -11,7 +11,7 @@ namespace EmployeeDeductions.Web.Controllers
     {
         private IEmployeeService _employeeService;
         
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService) 
         {
             _employeeService = employeeService;
         }
@@ -48,13 +48,12 @@ namespace EmployeeDeductions.Web.Controllers
         [HttpGet]
         public JsonResult CalculateBenefitsCost(int employeeId)
         {
+            //normally this functionality would be moved to an api
             var employee = _employeeService.Get(employeeId);
 
             var employeeTranslated = Mapper.Map<Employee, EmployeeViewModel>(employee);
-
-            var benefitCost = _employeeService.CalculateBenefitsCost(1);            
-
-            return Json(benefitCost, JsonRequestBehavior.AllowGet);            
+            
+            return Json(employeeTranslated, JsonRequestBehavior.AllowGet);            
         }
         
     }

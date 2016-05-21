@@ -35,7 +35,7 @@ namespace EmployeeDeductions.Web
             };
 
             var employee = new Employee();
-            employee.FirstName = "Aichael";
+            employee.FirstName = "Michael";
             employee.LastName = "Schwartz";
             employee.EmployeeId = 1;
             employee.Dependents.Add(dependent);

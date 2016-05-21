@@ -4,62 +4,43 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employees</h2>
 
 <p>
     @Html.ActionLink("Add New Employee", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeId)
-        </th>
+<table class="table table-condensed table-hover">
+    <tr>        
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BenefitCost)
-        </th>
+        </th>       
         <th>
             Depedents Count
         </th>
         <th></th>
+        <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeId)
-        </td>
+    <tr>        
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BenefitCost)
-        </td>
+        </td>        
         <td>
             @Html.DisplayFor(modelItem => item.Dependents.Count)
         </td>
         <td>
             @Html.ActionLink("Add Dependent", "AddDependent", new { EmployeeId = item.EmployeeId })           
-        </td>
-        @*<td>
-            @Html.ActionLink("Calculate Benefit Costs", "CalculateBenefitsCost", new { EmployeeId = item.EmployeeId })
-        </td>*@
+        </td>        
         <td>
-            <div id="btnCalculateBenefitsCost" class="btn btn-primary">Calculate Benefits Cost</div>
+            <div id="@item.EmployeeId" class="btn-calculate btn btn-primary">Calculate Benefits Cost</div>
         </td>
             @Html.HiddenFor(modelItem => item.EmployeeId)
     </tr>

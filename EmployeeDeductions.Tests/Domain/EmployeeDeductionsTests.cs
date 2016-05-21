@@ -6,10 +6,10 @@ using EmployeeDeductions.Web.Models;
 using EmployeeDeductions.Domain.Services;
 using EmployeeDeductions.Domain.Interfaces;
 
-namespace EmployeeDeductions.Tests.Domain.Services
+namespace EmployeeDeductions.Tests.Domain
 {
     [TestClass]
-    public class EmployeeServiceTests
+    public class EmployeDeductionsTests
     {
         private Mock<IRepository<Employee>> _employeeRepositoryMock;
         private EmployeeService _employeeService;

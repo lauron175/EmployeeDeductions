@@ -60,10 +60,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Domain\Services\EmployeeServiceTests.cs" />
+    <Compile Include="Domain\EmployeeDeductionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +77,7 @@
       <Name>EmployeeDeductions.Web</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

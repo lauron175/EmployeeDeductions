@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -23,7 +24,7 @@ namespace EmployeeDeductions.Web.Models
         {
             get 
             {
-                if (FirstName.StartsWith("A"))
+                if (FirstName.StartsWith("A", true, CultureInfo.InvariantCulture))
                     return 1000M - ((10M / 100M) * 1000M);
                 else
                     return 1000M;
@@ -35,7 +36,7 @@ namespace EmployeeDeductions.Web.Models
             {
                 return Dependents.Sum(x => x.BenefitCost) + BenefitCost;         
             }
-        }
+        }        
         public List<DependentViewModel> Dependents { get; set; }
 
         public EmployeeViewModel()

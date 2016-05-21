@@ -14,20 +14,21 @@ namespace EmployeeDeductions.Web.Controllers
         {
             _dependentService = dependentService;
         }
-
+         
         public ActionResult Create()
         {
             return View();
-        }
+        }       
 
+        //normally this would be part of an api
         [HttpPost]
         public ActionResult Create(DependentViewModel dependent)
         {
             var dependentTranslated = Mapper.Map<DependentViewModel, Dependent>(dependent);
 
-            _dependentService.Create(dependentTranslated);
+            _dependentService.Create(dependentTranslated);            
 
-            return View();
+            return Json("Created", JsonRequestBehavior.AllowGet);
         }
     }
 }

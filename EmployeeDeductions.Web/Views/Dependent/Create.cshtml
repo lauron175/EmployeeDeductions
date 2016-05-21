@@ -1,41 +1,25 @@
-﻿@model EmployeeDeductions.Web.Models.DependentViewModel
-
-@{
-    ViewBag.Title = "Add Dependent";
-}
-
+﻿
 <h2>Add Dependent</h2>
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
-        @*<h4>Add Dependent</h4>*@
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add" class="btn btn-default" />
-                <input type="submit" value="+ Add Another Dependent" class="btn btn-default" />
-            </div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="txtFirstName" class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtFirstname" placeholder="First Name">
         </div>
     </div>
-}
+    <div class="form-group">
+        <label for="txtLastname" class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtLastname" placeholder="Last Name">
+        </div>
+    </div>    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div id="btnAddDependent" class="btn btn-default">Add</div>
+        </div>
+    </div>
+</form>               
 
 <div>
     @Html.ActionLink("Back to Employee List", "Index", "Employee")        

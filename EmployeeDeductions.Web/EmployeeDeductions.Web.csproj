@@ -121,7 +121,6 @@
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\jquery.modal.css" />
     <Content Include="Scripts\App\app.js.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
@@ -159,7 +158,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\Employee\AddDependent.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Dependent\Create.cshtml" />
     <None Include="Web.Debug.config">
@@ -171,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\typings\toastr\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmployeeDeductions.Domain\EmployeeDeductions.Domain.csproj">
@@ -183,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="TypeScript\app.ts" />
+    <TypeScriptCompile Include="TypeScript\jquery.d.ts" />
+    <TypeScriptCompile Include="TypeScript\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

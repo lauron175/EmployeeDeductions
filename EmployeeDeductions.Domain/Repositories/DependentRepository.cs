@@ -2,13 +2,11 @@
 using EmployeeDeductions.Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace EmployeeDeductions.Domain.Repositories
 {
+    //Normally would not be mixing HttpContext into the domain project - just using the context as a temp db example
     public class DependentRepository : IRepository<Dependent>
     {
         public void Create(Dependent item)

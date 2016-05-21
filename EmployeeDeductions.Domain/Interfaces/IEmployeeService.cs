@@ -9,7 +9,6 @@ namespace EmployeeDeductions.Domain.Interfaces
         Employee Get(int id);
         void Create(Employee employee);
         void Update(Employee employee);
-        void Delete(int id);        
-        CalculatedBenefitCosts CalculateBenefitsCost(int employeeId);
+        void Delete(int id);                
     }
 }

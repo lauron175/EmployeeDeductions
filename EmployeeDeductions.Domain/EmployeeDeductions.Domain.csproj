@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IDependentService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
+    <Compile Include="Models\AbstractExample.cs" />
     <Compile Include="Models\CalculatedBenefitCosts.cs" />
     <Compile Include="Models\Dependent.cs" />
     <Compile Include="Models\Employee.cs" />
